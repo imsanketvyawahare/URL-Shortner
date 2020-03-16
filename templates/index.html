@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Url-Shortner</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename="style.css") }}">
+</head>
+<body>
+
+    <h1 id="head">URL SHORTNER SERVICE</h1>
+    <form action="/result/done" method="post">
+        <label for="url">Website Link :
+            <input type="url" name="url" required>
+        </label>
+        <br/>
+        <label for="code">ShortCode :
+            <input type="text" name="code" required>
+        </label>
+        <input type="submit" value="Submit">
+    </form>
+
+    {% if codes %}
+        {% for code in codes %}
+            <h1>{{ code }}</h1>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>

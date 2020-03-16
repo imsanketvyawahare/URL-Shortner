@@ -1,0 +1,11 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+#head{
+    height: 200px;
+    background-color: #333;
+    text-align: center;
+    letter-spacing: 30px;
+    color: white;
+}
