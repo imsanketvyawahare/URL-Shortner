@@ -26,7 +26,7 @@ def result():
         with open('data.json', 'w') as database:
             json.dump(mapping, database)
             session[code] = True
-            link= "http://127.0.0.1:5000/"+code
+            link= "https://shortereasy18.herokuapp.com/"+code
             return render_template('result.html',result=link)
     else:
         return redirect(url_for('home'))
