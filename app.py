@@ -8,7 +8,7 @@ app.secret_key = "itssecretkey"
 
 @app.route('/')
 def home():
-    return render_template('index.html', codes=session.keys())
+    return render_template('index.html')
 
 
 @app.route('/result/done', methods=['GET', 'POST'])
@@ -26,7 +26,8 @@ def result():
         with open('data.json', 'w') as database:
             json.dump(mapping, database)
             session[code] = True
-            return " "
+            link= "http://127.0.0.1:5000/"+code
+            return render_template('result.html',result=link)
     else:
         return redirect(url_for('home'))
 
@@ -36,9 +37,9 @@ def map_route(code):
     if os.path.exists('data.json'):
         with open('data.json') as datafile:
             mapping = json.load(datafile)
-    if code in mapping.keys():
-        if 'url' in mapping[code].keys():
-            return redirect(mapping[code]['url'])
+        if code in mapping.keys():
+            if 'url' in mapping[code].keys():
+                return redirect(mapping[code]['url'])
     return abort(404)
 
 
@@ -53,6 +54,4 @@ def session_api():
 
 
 if __name__ == '__main__':
-    app.jinja_env.auto_reload = True
-    app.config['TEMPLATES_AUTO_RELOAD'] = True
-    app.run(debug=True)
+    app.run()

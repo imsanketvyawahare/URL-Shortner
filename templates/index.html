@@ -4,25 +4,74 @@
     <meta charset="UTF-8">
     <title>Url-Shortner</title>
     <link rel="stylesheet" href="{{ url_for('static',filename="style.css") }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="shortcut icon" href="https://github.com/imsanketvyawahare/Images/blob/master/favicon-url-shortner.png?raw=true" type="image/x-icon">
+    <style>
+        #head{
+            margin-top: -10px;
+            height: 150px;
+            background-color: #2BBBAD;
+            letter-spacing: 10px;
+            text-align: center;
+        }
+        #form{
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        label{
+            font-size: 30px;
+        }
+        .input{
+            width: 200px;
+            padding: 10px;   
+        }
+        #submit{
+            color:white;
+        }
+        #button{
+            display:flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        #logo{
+            height: 150px;
+            width: 500px;
+        }
+        #main-head{
+            margin-bottom: 70px;
+            text-align: center;
+            color: #2BBBAD;
+        }
+    
+    </style>
+
 </head>
+
 <body>
-
-    <h1 id="head">URL SHORTNER SERVICE</h1>
-    <form action="/result/done" method="post">
-        <label for="url">Website Link :
-            <input type="url" name="url" required>
+    
+    <h1 id="head"><img src="https://github.com/imsanketvyawahare/Images/blob/master/logo-url-shortner.png?raw=true" alt="logo" id="logo"></h1>
+    
+    <div id="form">
+        <div id="main-head"> 
+        <h1>Want to send some long URL??</h1>
+        <h4>Use EASY SHORTNER and make the work easy!</h4>
+        </div>
+        <form action="/result/done" method="post">
+        <label for="url">Website :
+            <input type="url" name="url" class="input" required>
         </label>
-        <br/>
-        <label for="code">ShortCode :
-            <input type="text" name="code" required>
+        <label for="code">Short Code :
+            <input type="text" name="code" class="input" required>
         </label>
-        <input type="submit" value="Submit">
+        <div id="button">
+        <input class="btn-large waves-effect waves-light" type="submit" value="Submit" id="submit">
+        </form>
     </form>
-
-    {% if codes %}
-        {% for code in codes %}
-            <h1>{{ code }}</h1>
-        {% endfor %}
-    {% endif %}
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>
